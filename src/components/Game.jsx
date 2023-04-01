@@ -21,14 +21,14 @@ export const Game = () => {
     let description;
     if (move > 0 && move < history.length - 1) {
       description = "Go to move #" + move;
-    } else if (move == currentMove) {
+    } else if (move === currentMove) {
       description = "You are at move #" + Number(currentMove + 1);
     } else {
       description = "Go to game start";
     }
     return (
       <li key={move}>
-        {move == currentMove ? (
+        {move === currentMove ? (
           <p>{description}</p>
         ) : (
           <button onClick={() => jumpTo(move)}>{description}</button>

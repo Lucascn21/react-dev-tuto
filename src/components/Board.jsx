@@ -1,6 +1,6 @@
 import { Square } from "./Square";
 
-export const Board = ({ xIsNext, squares, onPlay }) => {
+export const Board = ({ xIsNext, squares, onPlay, toggleMoveOrder }) => {
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -43,6 +43,13 @@ export const Board = ({ xIsNext, squares, onPlay }) => {
       {renderRows(0, 3)}
       {renderRows(3, 6)}
       {renderRows(6, 9)}
+      <button
+        onClick={() => {
+          toggleMoveOrder();
+        }}
+      >
+        toggle moves order
+      </button>
     </>
   );
 };

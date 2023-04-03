@@ -71,9 +71,15 @@ body {
   width: 34px;
 }
 
+.winningSquare {
+  color: green;
+  border-color: green;
+  background-color: darkolivegreen;
+}
+
 .board-row:after {
   clear: both;
-  content: '';
+  content: "";
   display: table;
 }
 

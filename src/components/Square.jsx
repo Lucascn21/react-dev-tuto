@@ -1,6 +1,9 @@
-export const Square = ({ value, onSquareClick }) => {
+export const Square = ({ value, onSquareClick, isWinningSquare }) => {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button
+      className={isWinningSquare ? "square winningSquare" : "square"}
+      onClick={onSquareClick}
+    >
       {value}
     </button>
   );

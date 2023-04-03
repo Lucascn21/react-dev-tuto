@@ -1,6 +1,10 @@
 import { Square } from "./Square";
 
 export const Board = ({ xIsNext, squares, onPlay, toggleMoveOrder }) => {
+  function isFilled(square) {
+    return square != null;
+  }
+
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -17,9 +21,12 @@ export const Board = ({ xIsNext, squares, onPlay, toggleMoveOrder }) => {
   const winner = calculateWinner(squares);
   let status,
     winningLine = [];
+
   if (winner) {
     status = "Winner: " + winner.playerSymbol;
     winningLine = winner.winningLine;
+  } else if (!winner && squares.every(isFilled)) {
+    status = "Draw";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
@@ -71,8 +78,6 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      console.dir(squares[a]);
-      console.dir(lines[i]);
       return { playerSymbol: squares[a], winningLine: lines[i] };
     }
   }
